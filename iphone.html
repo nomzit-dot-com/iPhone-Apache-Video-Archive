@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Media</title>
+<link type="text/css" rel="stylesheet" media="screen" href="jqtouch/jqtouch.min.css">
+<link type="text/css" rel="stylesheet" media="screen" href="themes/jqt/theme.min.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+<script type="text/javascript" src="iPhoneVideoArchive.js"> </script>
+</head>
+<body>
+<div id="home">
+<div class="toolbar">
+<h1>Media</h1>
+</div>
+<ul class="edgetoedge">
+</ul>
+</div>
+<div id="video">
+<div class="toolbar">
+<a class="button back" href="#" onclick="$('#video video').each(function(){this.pause();});">Back</a>
+<h1>Video</h1>
+</div>
+<video width="320" height="320" class="edgetoedge" controls>
+</video>
+</div>
+<span id="placeholder"></span>
+</body>
+</html>
