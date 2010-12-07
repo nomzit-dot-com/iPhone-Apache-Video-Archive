@@ -21,8 +21,20 @@ $(document).ready(function(){
       {
         $('#video video').each(function()
         {
-          this.width = (this.videoWidth > window.innerWidth)?window.innerWidth:this.videoWidth;
-          this.height = (this.videoHeight > window.innerHeight)?window.innerHeight:this.videoHeight;
+          var height = this.videoHeight;
+          var width = this.videoWidth;
+          if (width > window.innerWidth)
+          {
+            height = height * window.innerWidth / width;
+            width = window.innerWidth;
+          }
+          if (height > window.innerHeight)
+          {
+            width = width * window.innerHeight / height;
+            height = window.innerHeight;
+          }
+          this.width = width;
+          this.height = height;
           this.play();
         });
       },false);
