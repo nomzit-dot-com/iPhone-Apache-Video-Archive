@@ -46,6 +46,7 @@ function fixlist(section,baseURL)
   $('#'+section + ' .edgetoedge a[href^="jqtouch"]').remove();
   $('#'+section + ' .edgetoedge a[href^="themes"]').remove();
   $('#'+section + ' .edgetoedge a[href$="html"]').remove();
+  $('#'+section + ' .edgetoedge a[href$="README"]').remove();
   $('#'+section + ' .edgetoedge a[href$="js"]').remove();
   $('#'+section + ' .edgetoedge a[href$="/"]').wrap('<li class="arrow" />');
   $('#'+section + ' a[href$="/"]').each(function(idx,elem)
