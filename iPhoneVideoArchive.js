@@ -21,17 +21,12 @@ $(document).ready(function(){
       {
         $('#video video').each(function()
         {
-          var height = this.videoHeight;
-          var width = this.videoWidth;
-          if (width > window.innerWidth)
-          {
-            height = height * window.innerWidth / width;
-            width = window.innerWidth;
-          }
+          var width = window.innerWidth;
+          var height = width * this.videoHeight / this.videoWidth;
           if (height > window.innerHeight)
           {
-            width = width * window.innerHeight / height;
             height = window.innerHeight;
+            width = height * this.videoWidth / this.videoHeight;
           }
           this.width = width;
           this.height = height;
@@ -51,6 +46,7 @@ function fixlist(section,baseURL)
   $('#'+section + ' .edgetoedge a[href^="jqtouch"]').remove();
   $('#'+section + ' .edgetoedge a[href^="themes"]').remove();
   $('#'+section + ' .edgetoedge a[href$="html"]').remove();
+  $('#'+section + ' .edgetoedge a[href$="README"]').remove();
   $('#'+section + ' .edgetoedge a[href$="js"]').remove();
   $('#'+section + ' .edgetoedge a[href$="/"]').wrap('<li class="arrow" />');
   $('#'+section + ' a[href$="/"]').each(function(idx,elem)
