@@ -4,8 +4,7 @@ var TopURL = window.location.protocol + '//' + window.location.host + TopDirecto
 var jQT = $.jQTouch({
 statusBar: 'black-translucent',
 preloadImages: [
-            'themes/jqt/img/chevron_white.png',
-            'themes/jqt/img/bg_row_select.gif',
+            'themes/jqt/img/chevron.png',
             'themes/jqt/img/back_button_clicked.png',
             'themes/jqt/img/button_clicked.png'
             ]
@@ -13,27 +12,6 @@ preloadImages: [
 
 $(document).ready(function(){
     $('#home .edgetoedge').load(TopDirectory + ' a',function(){fixlist("home",TopDirectory);});
-    $('#video video').each(function()
-    {
-      this.width = window.innerWidth;
-      this.height = window.innerWidth * 3 / 4;
-      this.addEventListener('loadedmetadata',function()
-      {
-        $('#video video').each(function()
-        {
-          var width = window.innerWidth;
-          var height = width * this.videoHeight / this.videoWidth;
-          if (height > window.innerHeight)
-          {
-            height = window.innerHeight;
-            width = height * this.videoWidth / this.videoHeight;
-          }
-          this.width = width;
-          this.height = height;
-          this.play();
-        });
-      },false);
-    });
 });
 function loadDirectory(url,section)
 {
@@ -65,11 +43,42 @@ function fixlist(section,baseURL)
   {
     this.innerText = this.innerText.replace(/\.m4v$/,'');
     this.innerText = this.innerText.replace(/^\d{1,4} - /,'');
+    var name = this.innerText;
     var url = this.href;
     url = url.replace(TopURL,'');
     url = baseURL + url;
     this.href='#video';
-    this.onclick=function(){$('#video video').each(function(){this.src=url;});};
+    var vidwidth = window.innerWidth;
+    var vidheight = window.innerWidth * 3 / 4;
+    this.onclick=function()
+    {
+      $('#video h1').replaceWith(
+	'<h1>' + name +
+	'</h1>');
+      $('#video video').replaceWith(
+	'<video src="' + url + '" width="' + vidwidth + '" height="' + vidheight + '" ' +
+	'class="edgetoedge" controls x-webkit-airplay="allow" autoplay>' +
+	'Your browser does not support the &lt;video&gt; tag.</video>');
+      $('#video video').each(function()
+      {
+	this.addEventListener('loadedmetadata',function()
+	{
+	  $('#video video').each(function()
+	  {
+	    var width = window.innerWidth;
+	    var height = width * this.videoHeight / this.videoWidth;
+	    if (height > window.innerHeight)
+	    {
+	      height = window.innerHeight;
+	      width = height * this.videoWidth / this.videoHeight;
+	    }
+	    this.width = width;
+	    this.height = height;
+	    this.play();
+	  });
+	},false);
+      });
+    };
   });
   $('#'+section + ' .edgetoedge > a').wrap('<li />');
 }
