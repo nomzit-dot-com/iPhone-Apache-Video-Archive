@@ -57,7 +57,7 @@ function fixlist(section,baseURL)
 	'</h1>');
       $('#video video').replaceWith(
 	'<video src="' + url + '" width="' + vidwidth + '" height="' + vidheight + '" ' +
-	'class="edgetoedge" controls x-webkit-airplay="allow" autoplay>' +
+	'class="edgetoedge" controls x-webkit-airplay="allow">' +
 	'Your browser does not support the &lt;video&gt; tag.</video>');
       $('#video video').each(function()
       {
@@ -74,7 +74,6 @@ function fixlist(section,baseURL)
 	    }
 	    this.width = width;
 	    this.height = height;
-	    this.play();
 	  });
 	},false);
       });
