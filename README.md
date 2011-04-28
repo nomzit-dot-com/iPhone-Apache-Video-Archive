@@ -4,11 +4,13 @@ It works by reading the html Apache generates for directory listings and creatin
 
 Installation Instructions
 -------------------------
-Copy everything from here except README into the top-level directory of your video archive site.
+Clone this repository and its submodules:
 
-Copy the 'jqtouch' and 'themes' directories from [JQTouch](http://jqtouch.com) into that directory.
+	git clone --recursive -- git://github.com/nomzit-dot-com/iPhone-Apache-Video-Archive.git iphone
 
-Visit iphone.html.
+Move, copy or link the files in the newly created iphone directory to the root of the directory containing your media files.
+
+Visit iphone.html in the directory via the corresponding HTTP URL
 
 License
 -------
